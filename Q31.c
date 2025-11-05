@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main(){
+    int i=0,num,bin[32];
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+
+    if (num == 0){
+    printf("binary-0\n");
+    return 0;
+    }
+
+    while(num>0){
+        bin[i]= num%2;
+        num = num/2;
+        i++;
+    }
+
+    for(int j=i-1; j>=0; j--){
+        printf("%d", bin[j]);
+    }
+    
+    return 0;
+
+}
