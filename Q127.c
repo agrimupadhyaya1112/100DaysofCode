@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *inputFile, *outputFile;
+    int ch;
+
+    inputFile = fopen("input.txt", "r");
+    if (inputFile == NULL) {
+        printf("Error opening input.txt\n");
+        return 1;
+    }
+
+    outputFile = fopen("output.txt", "w");
+    if (outputFile == NULL) {
+        printf("Error opening output.txt\n");
+        fclose(inputFile);
+        return 1;
+    }
+
+    while ((ch = fgetc(inputFile)) != EOF) {
+        if (islower(ch)) {
+            fputc(toupper(ch), outputFile);
+        } else {
+            fputc(ch, outputFile);
+        }
+    }
+
+    fclose(inputFile);
+    fclose(outputFile);
+
+    return 0;
+}
